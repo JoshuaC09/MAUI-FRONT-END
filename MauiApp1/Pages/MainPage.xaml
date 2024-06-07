@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.MainPage">
+    <FlexLayout Direction="Column">
+        <HorizontalStackLayout Padding="10" FlexLayout.Basis="120">
+            <Button x:Name="btnAdd" Text="Add" Margin="0,0,10,0" Clicked="btnAdd_Clicked" />
+            <Button x:Name="btnShowProducts" Text="Show Products" Clicked="btnShowProducts_Clicked" />
+            <Button x:Name="btnSettings" Text="Settings" Margin="10,0,0,0" Clicked="btnSettings_Clicked" />
+            <Button x:Name="btnConnStringTextFile" Text="Upload Conn String" Margin="10,0,0,0" Clicked="btnConnStringTextFile_Clicked" />
+        </HorizontalStackLayout>
+        <ListView x:Name="productListView" FlexLayout.Grow="1" HasUnevenRows="True" ItemTapped="productListView_ItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <VerticalStackLayout Padding="5">
+                            <Label Text="{Binding InventoryID, StringFormat='Product Code: {0}'}" FontSize="17" FontAttributes="Bold" />
+                            <Label Text="{Binding InventoryDescription, StringFormat='Product Description: {0}'}" FontSize="17" />
+                            <Label FontSize="17" TextColor="Red">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Product Quantity: " />
+                                        <Span Text="{Binding Quantity}" FontAttributes="Bold" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </VerticalStackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </FlexLayout>
+</ContentPage>
