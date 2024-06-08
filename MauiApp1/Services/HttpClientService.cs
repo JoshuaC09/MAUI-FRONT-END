@@ -22,7 +22,7 @@ namespace MauiApp1.Services
             };
             _httpClient = new HttpClient(handler)
             {
-                BaseAddress = new Uri("http://localhost:7054/")
+                BaseAddress = new Uri("http://192.168.100.61:7054/")
             };
         }
 
