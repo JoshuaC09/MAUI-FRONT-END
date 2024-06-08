@@ -1,1 +1,1 @@
-C:\MAUI UI and BackEnd\MAUI-UI-3\MauiApp1\MauiApp1.csproj;x64
+C:\MAUI GitHub\UI\MAUI-FRONT-END\MauiApp1\MauiApp1.csproj;x64

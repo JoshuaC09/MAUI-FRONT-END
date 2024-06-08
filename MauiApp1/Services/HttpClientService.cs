@@ -1,9 +1,10 @@
 ﻿using MauiApp1.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace MauiApp1.Services
@@ -21,13 +22,14 @@ namespace MauiApp1.Services
             };
             _httpClient = new HttpClient(handler)
             {
-                BaseAddress = new Uri("https://192.168.100.61:7054/api/")
+                BaseAddress = new Uri("http://localhost:7054/")
             };
         }
 
         public async Task<bool> SetConnectionStringAsync(string connectionString)
         {
-            var response = await _httpClient.PostAsJsonAsync("Database/SetConnectionString", new { ConnectionString = connectionString });
+            var content = new StringContent(JsonSerializer.Serialize(new { ConnectionString = connectionString }), Encoding.UTF8, "application/json");
+            var response = await _httpClient.PostAsync("api/Database/SetConnectionString", content);
             return response.IsSuccessStatusCode;
         }
 
